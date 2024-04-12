@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insulin Dosage Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .converter {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      label,
+      input,
+      select,
+      button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 10px;
+        }
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 10px;
+      }
+    </style>
+    <script>
+      function convertBasal() {
+        var basal = document.getElementById("basal").value;
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+
+        var conversionRates = {
+          100: 1,
+          200: 0.5,
+          500: 0.2,
+        };
+
+        var convertedBasal = basal * conversionRates[to];
+
+        document.getElementById("result").innerHTML =
+          "Converted basal: " + convertedBasal;
+      }
+
+      function convertICR() {
+        var icr = document.getElementById("icr").value.split(":")[1];
+        var from = document.getElementById("fromICR").value;
+        var to = document.getElementById("toICR").value;
+
+        var conversionRates = {
+          100: 1,
+          200: 0.5,
+          500: 0.2,
+        };
+
+        var convertedICR = icr / conversionRates[to];
+
+        document.getElementById("resultICR").innerHTML =
+          "Converted ICR: 1:" + convertedICR;
+      }
+
+      function convertISF() {
+        var isf = document.getElementById("isf").value.split(":")[1];
+        var from = document.getElementById("fromISF").value;
+        var to = document.getElementById("toISF").value;
+
+        var conversionRates = {
+          100: 1,
+          200: 0.5,
+          500: 0.2,
+        };
+
+        var convertedISF = isf / conversionRates[to];
+
+        document.getElementById("resultISF").innerHTML =
+          "Converted ISF: 1:" + convertedISF;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Insulin Dosage Converter</h1>
+      <h2>Basal Converter</h2>
+      <div class="row">
+        <label for="basal">Basal:</label>
+        <input type="number" id="basal" name="basal" />
+        <label for="from">From:</label>
+        <select id="from" name="from">
+          <option value="100" selected>U-100</option>
+          <option value="200">U-200</option>
+          <option value="500">U-500</option>
+        </select>
+        <label for="to">To:</label>
+        <select id="to" name="to">
+          <option value="100">U-100</option>
+          <option value="200" selected>U-200</option>
+          <option value="500">U-500</option>
+        </select>
+      </div>
+
+      <button onclick="convertBasal()">Convert Basal</button>
+      <p id="result"></p>
+
+      <h2>ICR Converter</h2>
+      <div class="row">
+        <label for="icr">ICR:</label>
+        <input
+          type="text"
+          id="icr"
+          name="icr"
+          placeholder="ex: 1:2"
+        />
+        <label for="fromICR">From:</label>
+        <select id="fromICR" name="fromICR">
+          <option value="100" selected>U-100</option>
+          <option value="200">U-200</option>
+          <option value="500">U-500</option>
+        </select>
+        <label for="toICR">To:</label>
+        <select id="toICR" name="toICR">
+          <option value="100">U-100</option>
+          <option value="200" selected>U-200</option>
+          <option value="500">U-500</option>
+        </select>
+      </div>
+      <button onclick="convertICR()">Convert ICR</button>
+      <p id="resultICR"></p>
+
+      <h2>ISF Converter</h2>
+      <div class="row">
+        <label for="isf">ISF:</label>
+        <input
+          type="text"
+          id="isf"
+          name="isf"
+          placeholder="Ex 1:25"
+        />
+        <label for="fromISF">From:</label>
+        <select id="fromISF" name="fromISF">
+          <option value="100" selected>U-100</option>
+          <option value="200">U-200</option>
+          <option value="500">U-500</option>
+        </select>
+        <label for="toISF">To:</label>
+        <select id="toISF" name="toISF">
+          <option value="100">U-100</option>
+          <option value="200" selected>U-200</option>
+          <option value="500">U-500</option>
+        </select>
+      </div>
+      <button onclick="convertISF()">Convert ISF</button>
+      <p id="resultISF"></p>
+    </div>
+  </body>
+</html>
