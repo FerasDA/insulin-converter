@@ -86,7 +86,7 @@
         var convertedBasal = basal * conversionRates[to];
 
         document.getElementById("result").innerHTML =
-          "Converted basal: " + convertedBasal;
+          "Converted basal: " + convertedBasal + " (units/hr)";
       }
 
       function convertICR() {
@@ -103,7 +103,7 @@
         var convertedICR = icr / conversionRates[to];
 
         document.getElementById("resultICR").innerHTML =
-          "Converted ICR: 1:" + convertedICR;
+          "Converted ICR: 1:" + convertedICR + " (unit:grams)";
       }
 
       function convertISF() {
@@ -120,14 +120,14 @@
         var convertedISF = isf / conversionRates[to];
 
         document.getElementById("resultISF").innerHTML =
-          "Converted ISF: 1:" + convertedISF;
+          "Converted ISF: 1:" + convertedISF + " (unit:mg/dL)";
       }
     </script>
   </head>
   <body>
     <div class="container">
-      <h1>Insulin Dosage Converter</h1>
-      <h2>Basal Converter</h2>
+      <h1>Concentrated Insulin Calculator</h1>
+      <h2>Basal Rate (units/hr)</h2>
       <div class="row">
         <label for="basal">Basal:</label>
         <input type="number" id="basal" name="basal" />
@@ -148,15 +148,10 @@
       <button onclick="convertBasal()">Convert Basal</button>
       <p id="result"></p>
 
-      <h2>ICR Converter</h2>
+      <h2>Insulin Carbohydrate Ration (unit:gram)</h2>
       <div class="row">
         <label for="icr">ICR:</label>
-        <input
-          type="text"
-          id="icr"
-          name="icr"
-          placeholder="ex: 1:2"
-        />
+        <input type="text" id="icr" name="icr" placeholder="ex: 1:2" />
         <label for="fromICR">From:</label>
         <select id="fromICR" name="fromICR">
           <option value="100" selected>U-100</option>
@@ -173,15 +168,10 @@
       <button onclick="convertICR()">Convert ICR</button>
       <p id="resultICR"></p>
 
-      <h2>ISF Converter</h2>
+      <h2>Insulin Sensitivity Factor (unit:mg/dL)</h2>
       <div class="row">
         <label for="isf">ISF:</label>
-        <input
-          type="text"
-          id="isf"
-          name="isf"
-          placeholder="Ex 1:25"
-        />
+        <input type="text" id="isf" name="isf" placeholder="Ex 1:25" />
         <label for="fromISF">From:</label>
         <select id="fromISF" name="fromISF">
           <option value="100" selected>U-100</option>
