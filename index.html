@@ -79,11 +79,12 @@
 
         var conversionRates = {
           100: 1,
-          200: 0.5,
-          500: 0.2,
+          200: 2,
+          500: 5,
         };
 
-        var convertedBasal = basal * conversionRates[to];
+        var convertedBasal =
+          (basal * conversionRates[from]) / conversionRates[to];
 
         document.getElementById("result").innerHTML =
           "Converted basal: " + convertedBasal + " (units/hr)";
@@ -148,7 +149,7 @@
       <button onclick="convertBasal()">Convert Basal</button>
       <p id="result"></p>
 
-      <h2>Insulin Carbohydrate Ration (unit:gram)</h2>
+      <h2>Insulin Carbohydrate Ratio (unit:gram)</h2>
       <div class="row">
         <label for="icr">ICR:</label>
         <input type="text" id="icr" name="icr" placeholder="ex: 1:2" />
